@@ -8,7 +8,9 @@ These files have been tested and used to generate a live ELK deployment on Azure
 
 Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-install-elk.yml, filebeat-playbook.yml, metricbeat-playbook.yml
+- install-elk.yml
+- filebeat-playbook.yml
+- metricbeat-playbook.yml
 
 This document contains the following details:
 - Description of the Topology
@@ -54,8 +56,8 @@ Only the Red-Team-Jumpbox machine can accept connections from the Internet. Acce
 Machines within the network can only be accessed by Red-Team-Jumpbox.
 
 The machine below has access to the ELK VM
-Red-Team-Jumpbox
-Private IP: 10.0.0.4 
+- Red-Team-Jumpbox
+- Private IP: 10.0.0.4 
 
 A summary of the access policies in place can be found in the table below.
 
@@ -79,28 +81,28 @@ Install ELK
 - Downloads and launches Docker container for the ELK Stack sebp/elk:761
 
 Install Filebeat Playbook
--Download and install Filebeat
--Copy Filebeat configuration
--Enable Filebeat system module
--Setup Filebeat
--Start and enable Filebeat service
+- Download and install Filebeat
+- Copy Filebeat configuration
+- Enable Filebeat system module
+- Setup Filebeat
+- Start and enable Filebeat service
 
 Install Metricbeat Playbook
--Download and install Metricbeat
--Copy Metricbeat configuration
--Enable Metricbeat docker module
--Setup Metricbeat
--Start and enable Metricbeat service
+- Download and install Metricbeat
+- Copy Metricbeat configuration
+- Enable Metricbeat docker module
+- Setup Metricbeat
+- Start and enable Metricbeat service
 
--The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![/Images/docker_ps.png](https://github.com/wardellii/CyberSecurity-HomeWork-and-Projects/blob/main/ELK%20Stack%20Project/Images/docker_ps.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
 
-| Red-Team-Web1    | Web Server          | 10.0.0.7
-| Red-Team-Web2    | Web Server          | 10.0.0.6 
+- Red-Team-Web1    | Web Server          | 10.0.0.7
+- Red-Team-Web2    | Web Server          | 10.0.0.6 
 
 We have installed the following Beats on these machines:
 - Filebeat
@@ -110,7 +112,7 @@ These Beats allow us to collect the following information from each machine:
 
 - Filebeat collects system logs, allowing us to view a variety of information, including successful and failed login attempts, failed processes, errors that occur in running processes, etc
 
--Metricbeat collects metric information on each system, allowing us to view CPU load, network I/O, CPU usage, and memory pressure, among other thing
+- Metricbeat collects metric information on each system, allowing us to view CPU load, network I/O, CPU usage, and memory pressure, among other thing
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -121,7 +123,7 @@ SSH into the control node and follow the steps below:
 
 -Update the hosts file to include your destination IPs of the ELk and webservers groups.
 
--Run the playbook, and navigate to http://20.120.14.143:5601/app/kibana to check that the installation worked as expected.
+- Run the playbook, and navigate to http://20.120.14.143:5601/app/kibana to check that the installation worked as expected.
 
 Groups in the host file specify which machines to install file beat versus elk on. The group for File beat is webservers, the elk group is ELK.
 
