@@ -121,7 +121,7 @@ SSH into the control node and follow the steps below:
 
 - Copy the three playbooks install-elk.yml, metricbeat-playbook.yml, and filebeat-playbook.yml file to /etc/ansible/roles/ on the control node.
 
--Update the hosts file to include your destination IPs of the ELk and webservers groups.
+- Update the hosts file to include your destination IPs of the ELk and webservers groups.
 
 - Run the playbook, and navigate to http://20.120.14.143:5601/app/kibana to check that the installation worked as expected.
 
@@ -151,16 +151,4 @@ $ ansible-playbook /etc/ansible/roles/install-elk.yml
 $ ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
 
 # Run the Metricbeat installation playbook
-$ ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+$ ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml.
