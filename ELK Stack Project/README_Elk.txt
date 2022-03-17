@@ -8,7 +8,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 
 Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-filebeat-paybook.yml
+filebeat-playbook.yml
 metricbeat-playbook.yml
 pentest.yml
 filebeat-config.yml
@@ -118,7 +118,7 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 
-- Copy the three playbooks install-elk.yml file to /etc/ansible/roles/install-elk.yml.
+- Copy the three playbooks install-elk.yml, metricbeat-playbook.yml, and filebeat-playbook.yml file to /etc/ansible/roles/install-elk.yml.
 
 -Update the hosts file to include your destination IP of the elk server.
 
