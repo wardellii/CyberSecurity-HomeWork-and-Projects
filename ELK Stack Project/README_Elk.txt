@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-[Images/topology.png](https://github.com/wardellii/CyberSecurity-HomeWork-and-Projects/blob/main/ELK%20Stack%20Project/Images/topology.png)
+[/Images/topology.png](https://github.com/wardellii/CyberSecurity-HomeWork-and-Projects/blob/main/ELK%20Stack%20Project/Images/topology.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. 
 
@@ -96,7 +96,7 @@ Install Metricbeat Playbook
 
 -The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-[Images/docker_ps.png](https://github.com/wardellii/CyberSecurity-HomeWork-and-Projects/blob/main/ELK%20Stack%20Project/Images/docker_ps.png)
+[/Images/docker_ps.png](https://github.com/wardellii/CyberSecurity-HomeWork-and-Projects/blob/main/ELK%20Stack%20Project/Images/docker_ps.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
