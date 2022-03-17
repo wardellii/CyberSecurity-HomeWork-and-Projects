@@ -29,16 +29,17 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
 
-The load balancer restricts high traffic and ensures functionality.
-It helps prevent overloading servers as well as optimizes productivity and maximizes uptime. It adds resiliency by rerouting live traffic from one server to another causing it to eliminate single points of failure from attacks such as DDoS attack.
+The load balancer restricts high traffic and ensures functionality. It helps prevent overloading servers as well as optimizes productivity and maximizes uptime.
+It adds resiliency by rerouting live traffic from one server to another causing it to eliminate single points of failure from attacks such as DDoS attack.
 
-Jump-box are highly secured computers that are never used for non-admin tasks. -They are comprehensive/lock-down secure admin workstations to decrease the chances of hackers/malware infection.
+Jump boxes are highly secured computers that are primarily used for admin tasks only. They are comprehensive/lock-down secure admin workstations so as to decrease the
+chances of hackers/malware infection.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the log files and system resources
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the log files and to monitor system resources
 
-- _Filebeat monitors log files and forwards the specified logs to Elasticsearch.
+- Filebeat monitors log files and forwards the specified logs to Elasticsearch.
 
-- Metricbeat collects andtransports metrics to Elasticsearch.
+- Metricbeat collects and transports metrics to Elasticsearch.
 
 The configuration details of each machine may be found below.
 
@@ -53,7 +54,7 @@ The configuration details of each machine may be found below.
 
 The machines on the internal network are not exposed to the public Internet. 
 
--Only the Red-Team-Jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+Only the Red-Team-Jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - 76.99.252.190
 
 Machines within the network can only be accessed by Red-Team-Jumpbox.
@@ -74,7 +75,7 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because the admin has the ability to push configuration and updates to multiple machines in a flexible, agentless, efficient way.
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because this provides the ability to configure machines in a consistent, repeatable, and scalable way.
 
 The playbook implements the following tasks:
 - Installs Docker
@@ -89,7 +90,6 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 Images/docker_ps.png
-
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -118,7 +118,7 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 
-- Copy the install-elk.yml file to /etc/ansible/roles/install-elk.yml.
+- Copy the three playbooks install-elk.yml file to /etc/ansible/roles/install-elk.yml.
 
 -Update the hosts file to include your destination IP of the elk server.
 
