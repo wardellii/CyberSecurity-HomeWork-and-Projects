@@ -96,7 +96,7 @@ Install Metricbeat Playbook
 
 -The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-[Images/docker_ps.png]()
+[Images/docker_ps.png](https://github.com/wardellii/CyberSecurity-HomeWork-and-Projects/blob/main/ELK%20Stack%20Project/Images/docker_ps.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
