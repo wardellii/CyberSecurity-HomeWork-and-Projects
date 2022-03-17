@@ -8,9 +8,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 
 Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
--install-elk.yml
--filebeat-playbook.yml
--metricbeat-playbook.yml
+install-elk.yml, filebeat-playbook.yml, metricbeat-playbook.yml
 
 This document contains the following details:
 - Description of the Topology
