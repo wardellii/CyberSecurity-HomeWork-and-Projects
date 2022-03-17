@@ -119,89 +119,36 @@ In order to use the playbook, you will need to have an Ansible control node alre
 
 SSH into the control node and follow the steps below:
 
-- Copy the three playbooks install-elk.yml, metricbeat-playbook.yml, and filebeat-playbook.yml file to /etc/ansible/roles/
--Update the hosts file to include your destination IP of the elk server.
+- Copy the three playbooks install-elk.yml, metricbeat-playbook.yml, and filebeat-playbook.yml file to /etc/ansible/roles/ on the control node.
+
+-Update the hosts file to include your destination IPs of the ELk and webservers groups.
+
 -Run the playbook, and navigate to http://20.120.14.143:5601/app/kibana to check that the installation worked as expected.
--Copy filebeat-playbook.yml and metricbeat-playbook.yml from /etc/ansible/roles.
--Update the hosts file under the appropriate server with the machine's internal IP address to make Ansible run the playbook on a specific machine.
--Navigate to the following URL to check that the ELK server is running: http:/20.120.14.143:5601/app/kibana
 
-Groups in the host file specify which machines to install file beat versus elk on. The group for File beat is webservers the elk group is ELK.
-
+Groups in the host file specify which machines to install file beat versus elk on. The group for File beat is webservers, the elk group is ELK.
 
 Specific Commands Bonus
 
- -------Filebeat---------
+# Ensure the destination directories exist
+$ mkdir -p /etc/ansible/roles/files
 
-- To create the filebeat-configuration.yml file: nano filebeat-configuration.yml. For this, I used the filebeat configuration file template.
+# Copy the playbooks to the expected locations
+$ cp CSBC-Elk-Stack/ansible/roles/install-elk.yml /etc/ansible/roles
+$ cp CSBC-Elk-Stack/ansible/roles/filebeat-playbook.yml /etc/ansible/roles
+$ cp CSBC-Elk-Stack/ansible/roles/metricbeat-playbook.yml /etc/ansible/roles
 
-- To create the playbook: nano filebeat-playbook.yml
+# Copy the filebeat and metricbeat configurations to the expected location
+$ cp CSBC-Elk-Stack/ansible/roles/files/filebeat-config.yml /etc/ansible/roles/files
+$ cp CSBC-Elk-Stack/ansible/roles/files/metricbeat-config.yml /etc/ansible/roles/files
 
-  ---
- - name: installing and launching filebeat
-	   hosts: webservers
-       become: true
-       tasks:
+# Update the /etc/ansible/hosts file with appropriate configuration
+$ nano /etc/ansible/hosts
 
-	   - name: download filebeat deb
-  	     command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.7.1-amd64.deb
+# Run the ELK installation playbook
+$ ansible-playbook /etc/ansible/roles/install-elk.yml
 
-	   - name: install filebeat deb
-  	     command: dpkg -i filebeat-7.7.1-amd64.deb
+# Run the Filebeat installation playbook
+$ ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
 
-	   - name: drop in filebeat.yml
-  	     copy:
-   	       src: ./files/filebeat-configuration.yml
-   	       dest: /etc/filebeat/filebeat.yml
-
-	   - name: enable and configure system module
-  	     command: filebeat modules enable system
-
-	   - name: setup filebeat
-  	     command: filebeat setup
-
-	   - name: start filebeat service
-  	    command: service filebeat start
----
--To run the playbook: ansible-playbook filebeat-playbook.yml
-
-* In order to run the playbook, you have to be in the directory of the playbook, orspecify the path to it (ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
-
-
--------Metricbeat-------
-
-- To create the metricbeat-configuration.yml file: nano metricbeat-configuration.yml. For this, I used the metricbeat configuration file template.
-
-- To create the playbool: nano metricbeat-playbook.yml
-
----
-  - name: installing and lunching metricbeat
-    hosts: webservers
-    become: true
-    tasks:
-    
-  - name: download metricbeat deb
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.7.1-amd64.deb
-    
-  - name: install metricbeat deb
-    command: sudo dpkg -i metricbeat-7.7.1-amd64.deb
-    
-  - name: drop in metricbeat.yml
-    copy:
-      src: /etc/ansible/roles/files/metricbeat-configuration.yml
-      dest: /etc/metricbeat/metricbeat.yml
-      
-   - name: enable and configure system module
-     command: metricbeat modules enable system
-     
-   - name: setup metricbeat
-     command: metricbeat setup
-     
-   - name: start metricbeat service
-     command: service metricbeat start
-     
-   ---
-   
-   - To run the playbook: ansible-playbook metricbeat-playbook.yml
-   
-   * To order to run the playbook, you have to be in the directory of the playbook, or specify the path to it (ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml
+# Run the Metricbeat installation playbook
+$ ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml
