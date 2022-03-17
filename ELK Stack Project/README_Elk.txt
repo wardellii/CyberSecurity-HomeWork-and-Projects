@@ -2,7 +2,8 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![/Images/topology.png](https://github.com/wardellii/CyberSecurity-HomeWork-and-Projects/blob/main/ELK%20Stack%20Project/Images/topology.png)
+![/](https://github.com/wardellii/CyberSecurity-HomeWork-and-Projects/blob/main/ELK%20Stack%20Project/Images/topology.png)
+![Images/topology.png](Images/topology.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. 
 
