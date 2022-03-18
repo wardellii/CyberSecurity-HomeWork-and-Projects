@@ -1,0 +1,43 @@
+Interview Questions - Logging and Monitoring
+Setting Alerts in a New Monitoring System
+Problem
+Creating and maintaining a new monitoring system is tedious. Many things need to be determined, including what alerts to set on each monitored machine and why.
+Example
+In Project 1, The network consisting of two subnets and four total virtual machines. The below describe the subnets, machines on each, and the machine's purpose:
+
+JumpBox
+10.0.0.4
+Runs ansible, configures and provisions other machines.
+Red-Team-Web-1
+10.0.0.7
+Runs DVWA Application via docker container.
+Red Team Web-2
+10.0.0.6
+Runs DVWA Application via docker container.
+
+Elk-Stack-VM
+10.1.0.4
+Runs ELK stack via docker container.
+
+Only the JumpBox needs to be publicly accessible via SSH, and only from one IP address (my home network IP). None of the other machines need be publicly accessible via SSH.
+Solution Requirements
+Alerts should be configured when SSH access is attempted to these machines. The web VMs should only be accessible on HTTP via the load-balancer, additional alerts should fire when HTTP access is attempted on these machines. In order to not advertise our network topology, an alert should be configured on each of the machines to warn of ping attempts.
+Solution Details
+In Project 1, we would have used the Kibana web interface to configure these alerts. In addition to the alerts mentioned above, we would like to guarantee no unauthorized SSH access occurs on the Jump Box, so we would set an alert to warn of failed SSH attempts, or any SSH attempt from an unauthorized IP address.
+In summary, configure the following alerts
+Failed SSH attempts
+Ping attempts
+Any SSH attempt from unauthorized IP addresses
+Web-1, Web-2
+Failed SSH attempts
+Ping attempts
+Any SSH attempt from outside the virtual network
+Any HTTP attempt from unauthorized IP addresses
+Elk-Stack VM
+Failed SSH Attempts
+Ping attempts
+Any SSH attempt from outside the virtual network
+Any Kibana web interface access from unauthorized IP addresses
+Advantages and Disadvantages
+While the above alerts should cover the vast majority of malicious circumstances, things can happen that compromise any given machine a network.
+The  SolarWinds breach, is an example of this.
